@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animation Nuage Flottant</title>
+    <title>Flottement Doux</title>
     <style>
         body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        canvas { border: 1px solid black; }
+        canvas { border: none; } /* Si vous ne voulez pas de bordure autour du canvas */
     </style>
 </head>
 <body>
@@ -20,8 +20,11 @@
   canvas.width = 800;
   canvas.height = 600;
 
-  var posX = 0, posY = 0; // Positions initiales de l'image
-  var speedX = 0.5, speedY = 0.3; // Vitesses de déplacement en X et Y réduites pour un mouvement plus lent
+  var posX = canvas.width / 2 - 100; // Centrer l'image initialement
+  var posY = canvas.height / 2 - 100;
+  var amplitudeX = 10; // Amplitude de l'oscillation horizontale
+  var amplitudeY = 5; // Amplitude de l'oscillation verticale
+  var angle = 0; // Initialiser l'angle pour l'oscillation
 
   img.onload = function() {
     animate();
@@ -29,21 +32,9 @@
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Efface le canvas
-    ctx.drawImage(img, posX, posY, 200, 200); // Dessine l'image à sa position actuelle
+    ctx.drawImage(img, posX + amplitudeX * Math.sin(angle), posY + amplitudeY * Math.sin(angle), 200, 200); // Dessine l'image avec un mouvement oscillatoire
 
-    // Met à jour les positions X et Y
-    posX += speedX;
-    posY += speedY;
-
-    // Conditions de rebond sur les bords horizontaux
-    if (posX + 200 > canvas.width || posX < 0) {
-      speedX *= -1;
-    }
-
-    // Conditions de rebond sur les bords verticaux
-    if (posY + 200 > canvas.height || posY < 0) {
-      speedY *= -1;
-    }
+    angle += 0.05; // Incrémenter l'angle pour changer le sinus et créer une oscillation
 
     requestAnimationFrame(animate); // Appelle récursivement animate pour créer l'animation
   }
