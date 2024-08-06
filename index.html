@@ -34,7 +34,7 @@
     // Dessine l'image avec un mouvement oscillatoire seulement en vertical
     ctx.drawImage(img, posX, posY + amplitudeY * Math.sin(angle), 200, 200);
 
-    angle += 0.02; // Incrémenter l'angle pour changer le sinus et créer une oscillation
+    angle += 0.03; // Incrémenter l'angle pour changer le sinus et créer une oscillation
 
     requestAnimationFrame(animate); // Appelle récursivement animate pour créer l'animation
   }
