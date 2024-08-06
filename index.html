@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animation d'Image Transparente</title>
+<style>
+  body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+  canvas { border: 1px solid black; }
+</style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<script>
+  var canvas = document.getElementById('myCanvas');
+  var ctx = canvas.getContext('2d');
+  var img = new Image();
+  img.src = '/Users/kidpaddle009/Pictures/Cobblepot95_.png'; // Remplacez par le chemin de votre image
+
+  // Dimensions du canvas
+  canvas.width = 800;
+  canvas.height = 600;
+
+  var posX = 0; // Position initiale de l'image
+  var speed = 2; // Vitesse de déplacement de l'image
+
+  img.onload = function() {
+    animate();
+  };
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Efface le canvas
+    ctx.drawImage(img, posX, 100, 200, 200); // Dessine l'image avec largeur et hauteur définies
+    posX += speed; // Met à jour la position de l'image
+
+    // Fait rebondir l'image horizontalement
+    if (posX + 200 > canvas.width || posX < 0) {
+      speed *= -1;
+    }
+
+    requestAnimationFrame(animate); // Appelle récursivement animate pour créer l'animation
+  }
+</script>
+</body>
+</html>
