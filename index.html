@@ -34,7 +34,7 @@
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Efface le canvas
     ctx.drawImage(img, posX + amplitudeX * Math.sin(angle), posY + amplitudeY * Math.sin(angle), 200, 200); // Dessine l'image avec un mouvement oscillatoire
 
-    angle += 0.05; // Incrémenter l'angle pour changer le sinus et créer une oscillation
+    angle += 0.01; // Incrémenter l'angle pour changer le sinus et créer une oscillation
 
     requestAnimationFrame(animate); // Appelle récursivement animate pour créer l'animation
   }
