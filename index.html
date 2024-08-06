@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flottement Doux</title>
+    <title>Flottement Vertical Doux</title>
     <style>
         body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        canvas { border: none; } /* Si vous ne voulez pas de bordure autour du canvas */
+        canvas { border: none; }
     </style>
 </head>
 <body>
@@ -22,8 +22,7 @@
 
   var posX = canvas.width / 2 - 100; // Centrer l'image initialement
   var posY = canvas.height / 2 - 100;
-  var amplitudeX = 10; // Amplitude de l'oscillation horizontale
-  var amplitudeY = 5; // Amplitude de l'oscillation verticale
+  var amplitudeY = 20; // Amplitude de l'oscillation verticale
   var angle = 0; // Initialiser l'angle pour l'oscillation
 
   img.onload = function() {
@@ -32,9 +31,10 @@
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Efface le canvas
-    ctx.drawImage(img, posX + amplitudeX * Math.sin(angle), posY + amplitudeY * Math.sin(angle), 200, 200); // Dessine l'image avec un mouvement oscillatoire
+    // Dessine l'image avec un mouvement oscillatoire seulement en vertical
+    ctx.drawImage(img, posX, posY + amplitudeY * Math.sin(angle), 200, 200);
 
-    angle += 0.03; // Incrémenter l'angle pour changer le sinus et créer une oscillation
+    angle += 0.02; // Incrémenter l'angle pour changer le sinus et créer une oscillation
 
     requestAnimationFrame(animate); // Appelle récursivement animate pour créer l'animation
   }
