@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animation Transparente</title>
+    <title>Animation de Rebond</title>
     <style>
         body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
         canvas { border: 1px solid black; }
@@ -17,12 +17,11 @@
   var img = new Image();
   img.src = 'Cobblepot95_.png'; // Assurez-vous que le chemin est correct
 
-  // Dimensions du canvas
   canvas.width = 800;
   canvas.height = 600;
 
-  var posX = 0; // Position initiale de l'image
-  var speed = 2; // Vitesse de déplacement de l'image
+  var posX = 0, posY = 0; // Positions initiales de l'image
+  var speedX = 2, speedY = 2; // Vitesses de déplacement en X et Y
 
   img.onload = function() {
     animate();
@@ -30,12 +29,20 @@
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Efface le canvas
-    ctx.drawImage(img, posX, 100, 200, 200); // Dessine l'image avec largeur et hauteur définies
-    posX += speed; // Met à jour la position de l'image
+    ctx.drawImage(img, posX, posY, 200, 200); // Dessine l'image à sa position actuelle
 
-    // Fait rebondir l'image horizontalement
+    // Met à jour les positions X et Y
+    posX += speedX;
+    posY += speedY;
+
+    // Conditions de rebond sur les bords horizontaux
     if (posX + 200 > canvas.width || posX < 0) {
-      speed *= -1;
+      speedX *= -1;
+    }
+
+    // Conditions de rebond sur les bords verticaux
+    if (posY + 200 > canvas.height || posY < 0) {
+      speedY *= -1;
     }
 
     requestAnimationFrame(animate); // Appelle récursivement animate pour créer l'animation
