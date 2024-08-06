@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animation de Rebond</title>
+    <title>Animation Nuage Flottant</title>
     <style>
         body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
         canvas { border: 1px solid black; }
@@ -21,7 +21,7 @@
   canvas.height = 600;
 
   var posX = 0, posY = 0; // Positions initiales de l'image
-  var speedX = 2, speedY = 2; // Vitesses de déplacement en X et Y
+  var speedX = 0.5, speedY = 0.3; // Vitesses de déplacement en X et Y réduites pour un mouvement plus lent
 
   img.onload = function() {
     animate();
