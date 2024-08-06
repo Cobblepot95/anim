@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animation d'Image Transparente</title>
-<style>
-  body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-  canvas { border: 1px solid black; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Transparente</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        canvas { border: 1px solid black; }
+    </style>
 </head>
 <body>
 <canvas id="myCanvas"></canvas>
 <script>
-
-  <img src="Cobblepot95_.png" alt="Description">
-
+  var canvas = document.getElementById('myCanvas');
+  var ctx = canvas.getContext('2d');
+  var img = new Image();
+  img.src = 'Cobblepot95_.png'; // Assurez-vous que le chemin est correct
 
   // Dimensions du canvas
   canvas.width = 800;
